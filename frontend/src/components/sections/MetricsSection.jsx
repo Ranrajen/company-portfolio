@@ -1,4 +1,3 @@
-// src/components/sections/MetricsSection.jsx
 import { metricsData } from '../../data/company';
 import SectionHeader from '../ui/SectionHeader';
 

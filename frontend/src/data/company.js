@@ -1,4 +1,3 @@
-// src/data/company.js
 
 export const companyInfo = {
   name: 'Outpro.India',
@@ -278,7 +277,7 @@ export const portfolioData = [
     client: 'RUFC Sports Club',
     description:
       'Complete end-to-end management of a high-tier football tournament, handling multi-team scheduling and live match operations.',
-    image: '/images/rufc-winter-cup.jpg', // ✅ Fixed
+    image: '/images/rufc-winter-cup.jpg', 
     kpis: [
       { label: 'Teams', value: '8' },
       { label: 'Matches', value: '15' },
@@ -293,7 +292,7 @@ export const portfolioData = [
     client: 'Ashray Home Care',
     description:
       'An inclusive community sports day curated for Ashray Home Care, fostering joy and engagement through custom activities.',
-    image: '/images/udaan-event.jpg', // ✅ Already correct
+    image: '/images/udaan-event.jpg', 
     kpis: [
       { label: 'Children', value: '50+' },
       { label: 'Activities', value: '10+' },
@@ -308,7 +307,7 @@ export const portfolioData = [
     client: 'IMSC Jaipur',
     description:
       'Managed and executed the IMSC Gym Box Cricket Championship in Jaipur, delivering end-to-end event operations.',
-    image: '/images/gym-box-cricket.jpg', // ✅ Fixed
+    image: '/images/gym-box-cricket.jpg', 
     kpis: [
       { label: 'Location', value: 'Jaipur' },
       { label: 'Format', value: '7+3 Box Cricket' },

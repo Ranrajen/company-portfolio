@@ -4,16 +4,12 @@ import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 
-// Generate JWT Token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE || '30d'
   });
 };
 
-// @desc    Register user
-// @route   POST /api/auth/register
-// @access  Public
 export const register = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -25,7 +21,6 @@ export const register = asyncHandler(async (req, res) => {
 
   const { name, email, password, role } = req.body;
 
-  // Check if user exists
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res.status(400).json({
@@ -34,7 +29,6 @@ export const register = asyncHandler(async (req, res) => {
     });
   }
 
-  // Create user
   const user = await User.create({
     name,
     email,
@@ -42,7 +36,6 @@ export const register = asyncHandler(async (req, res) => {
     role: role || 'viewer'
   });
 
-  // Generate token
   const token = generateToken(user._id);
 
   res.status(201).json({
@@ -57,9 +50,6 @@ export const register = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Login user
-// @route   POST /api/auth/login
-// @access  Public
 export const login = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -71,7 +61,6 @@ export const login = asyncHandler(async (req, res) => {
 
   const { email, password } = req.body;
 
-  // Check for user
   const user = await User.findOne({ email }).select('+password');
   if (!user) {
     return res.status(401).json({
@@ -108,9 +97,6 @@ export const login = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get current user
-// @route   GET /api/auth/me
-// @access  Private
 export const getMe = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id);
   
@@ -120,9 +106,6 @@ export const getMe = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Update user profile
-// @route   PUT /api/auth/update
-// @access  Private
 export const updateProfile = asyncHandler(async (req, res) => {
   const { name, email } = req.body;
   
@@ -146,9 +129,6 @@ export const updateProfile = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Change password
-// @route   PUT /api/auth/password
-// @access  Private
 export const changePassword = asyncHandler(async (req, res) => {
   const { currentPassword, newPassword } = req.body;
   
@@ -178,9 +158,6 @@ export const changePassword = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Forgot password
-// @route   POST /api/auth/forgot-password
-// @access  Public
 export const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
   
@@ -192,7 +169,6 @@ export const forgotPassword = asyncHandler(async (req, res) => {
     });
   }
   
-  // Generate reset token
   const resetToken = crypto.randomBytes(20).toString('hex');
   user.resetPasswordToken = crypto
     .createHash('sha256')
@@ -202,8 +178,6 @@ export const forgotPassword = asyncHandler(async (req, res) => {
   
   await user.save();
   
-  // TODO: Send email with reset link
-  // const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
   
   res.status(200).json({
     success: true,

@@ -1,4 +1,3 @@
-// src/App.jsx
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
@@ -14,8 +13,6 @@ import TestimonialsPage from './pages/TestimonialsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 
-// Without this, navigating to a new route keeps the old scroll position —
-// one of the most common causes of a page that "looks broken" after a link click.
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {

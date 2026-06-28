@@ -1,4 +1,3 @@
-// src/components/sections/ServicesSection.jsx
 import { Link } from 'react-router-dom';
 import { servicesData } from '../../data/company';
 import SectionHeader from '../ui/SectionHeader';

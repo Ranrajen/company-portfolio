@@ -1,4 +1,3 @@
-// src/pages/TestimonialsPage.jsx
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import CtaSection from '../components/sections/CtaSection';
 

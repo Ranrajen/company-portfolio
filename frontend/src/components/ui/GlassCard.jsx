@@ -1,4 +1,3 @@
-// src/components/ui/GlassCard.jsx
 import { cn } from '../../lib/utils';
 
 export default function GlassCard({ children, className = '', ...props }) {

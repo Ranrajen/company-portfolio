@@ -1,4 +1,3 @@
-// src/components/ui/SectionHeader.jsx
 function SectionHeader({
   badge,
   title,

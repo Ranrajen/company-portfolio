@@ -1,4 +1,3 @@
-// src/components/sections/TestimonialsSection.jsx
 import { useState } from 'react';
 import { testimonialsData } from '../../data/company';
 import SectionHeader from '../ui/SectionHeader';

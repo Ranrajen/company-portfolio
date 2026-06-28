@@ -1,4 +1,3 @@
-// src/lib/api.js
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
 async function request(path, options) {
@@ -24,10 +23,10 @@ export const api = {
   getPortfolioItem: (id) => request(`/portfolio/${id}`),
   getFeaturedPortfolio: () => request('/portfolio/featured'),
   getPortfolioCategories: () => request('/portfolio/categories'),
-  getTestimonials: () => request('/testimonials'), // Add this endpoint if needed
-  getTeamMembers: () => request('/team'), // Add this endpoint if needed
+  getTestimonials: () => request('/testimonials'), 
+  getTeamMembers: () => request('/team'), 
   
-  // Auth endpoints
+  
   login: (email, password) => 
     request('/auth/login', { 
       method: 'POST', 

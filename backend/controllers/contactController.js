@@ -3,9 +3,6 @@ import { asyncHandler } from '../middleware/asyncHandler.js';
 import { validationResult } from 'express-validator';
 import { sendContactEmail } from '../utils/email.js';
 
-// @desc    Submit contact form
-// @route   POST /api/contacts
-// @access  Public
 export const submitContact = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -43,9 +40,6 @@ export const submitContact = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get all contacts (Admin)
-// @route   GET /api/contacts
-// @access  Private (Admin only)
 export const getContacts = asyncHandler(async (req, res) => {
   const { status, limit = 50, page = 1 } = req.query;
   
@@ -73,9 +67,6 @@ export const getContacts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get single contact
-// @route   GET /api/contacts/:id
-// @access  Private (Admin only)
 export const getContact = asyncHandler(async (req, res) => {
   const contact = await Contact.findById(req.params.id);
   
@@ -92,9 +83,6 @@ export const getContact = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Update contact status
-// @route   PUT /api/contacts/:id/status
-// @access  Private (Admin only)
 export const updateContactStatus = asyncHandler(async (req, res) => {
   const { status } = req.body;
   
@@ -124,9 +112,6 @@ export const updateContactStatus = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Delete contact
-// @route   DELETE /api/contacts/:id
-// @access  Private (Admin only)
 export const deleteContact = asyncHandler(async (req, res) => {
   const contact = await Contact.findById(req.params.id);
   
@@ -145,9 +130,6 @@ export const deleteContact = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get contact stats
-// @route   GET /api/contacts/stats
-// @access  Private (Admin only)
 export const getContactStats = asyncHandler(async (req, res) => {
   const total = await Contact.countDocuments();
   const pending = await Contact.countDocuments({ status: 'pending' });

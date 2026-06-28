@@ -2,9 +2,6 @@ import Service from '../models/Service.js';
 import { asyncHandler } from '../middleware/asyncHandler.js';
 import { validationResult } from 'express-validator';
 
-// @desc    Get all services
-// @route   GET /api/services
-// @access  Public
 export const getServices = asyncHandler(async (req, res) => {
   const { active, limit = 50, sort = 'order' } = req.query;
   
@@ -22,9 +19,6 @@ export const getServices = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get single service by slug
-// @route   GET /api/services/slug/:slug
-// @access  Public
 export const getServiceBySlug = asyncHandler(async (req, res) => {
   const service = await Service.findOne({ slug: req.params.slug });
   
@@ -41,9 +35,6 @@ export const getServiceBySlug = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get single service by ID
-// @route   GET /api/services/id/:id
-// @access  Public
 export const getServiceById = asyncHandler(async (req, res) => {
   const service = await Service.findById(req.params.id);
   
@@ -60,9 +51,6 @@ export const getServiceById = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Create a new service
-// @route   POST /api/services
-// @access  Private (Admin only)
 export const createService = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -80,9 +68,6 @@ export const createService = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Update a service
-// @route   PUT /api/services/:id
-// @access  Private (Admin only)
 export const updateService = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -113,9 +98,6 @@ export const updateService = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Delete a service
-// @route   DELETE /api/services/:id
-// @access  Private (Admin only)
 export const deleteService = asyncHandler(async (req, res) => {
   const service = await Service.findById(req.params.id);
   
@@ -133,10 +115,6 @@ export const deleteService = asyncHandler(async (req, res) => {
     message: 'Service deleted successfully'
   });
 });
-
-// @desc    Search services
-// @route   GET /api/services/search
-// @access  Public
 export const searchServices = asyncHandler(async (req, res) => {
   const { q } = req.query;
   

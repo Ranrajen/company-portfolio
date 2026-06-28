@@ -2,9 +2,6 @@ import Portfolio from '../models/Portfolio.js';
 import { asyncHandler } from '../middleware/asyncHandler.js';
 import { validationResult } from 'express-validator';
 
-// @desc    Get all portfolio items
-// @route   GET /api/portfolio
-// @access  Public
 export const getPortfolioItems = asyncHandler(async (req, res) => {
   const { category, featured, active, limit = 50 } = req.query;
   
@@ -24,9 +21,6 @@ export const getPortfolioItems = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get single portfolio item
-// @route   GET /api/portfolio/:id
-// @access  Public
 export const getPortfolioItem = asyncHandler(async (req, res) => {
   const portfolio = await Portfolio.findById(req.params.id);
   
@@ -43,9 +37,6 @@ export const getPortfolioItem = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get portfolio by slug
-// @route   GET /api/portfolio/slug/:slug
-// @access  Public
 export const getPortfolioBySlug = asyncHandler(async (req, res) => {
   const portfolio = await Portfolio.findOne({ slug: req.params.slug });
   
@@ -62,9 +53,6 @@ export const getPortfolioBySlug = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Create portfolio item
-// @route   POST /api/portfolio
-// @access  Private (Admin only)
 export const createPortfolioItem = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -82,9 +70,6 @@ export const createPortfolioItem = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Update portfolio item
-// @route   PUT /api/portfolio/:id
-// @access  Private (Admin only)
 export const updatePortfolioItem = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -115,9 +100,6 @@ export const updatePortfolioItem = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Delete portfolio item
-// @route   DELETE /api/portfolio/:id
-// @access  Private (Admin only)
 export const deletePortfolioItem = asyncHandler(async (req, res) => {
   const portfolio = await Portfolio.findById(req.params.id);
   
@@ -135,10 +117,6 @@ export const deletePortfolioItem = asyncHandler(async (req, res) => {
     message: 'Portfolio item deleted successfully'
   });
 });
-
-// @desc    Get portfolio categories
-// @route   GET /api/portfolio/categories
-// @access  Public
 export const getPortfolioCategories = asyncHandler(async (req, res) => {
   const categories = await Portfolio.distinct('category');
   
@@ -148,9 +126,6 @@ export const getPortfolioCategories = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get featured portfolio items
-// @route   GET /api/portfolio/featured
-// @access  Public
 export const getFeaturedPortfolio = asyncHandler(async (req, res) => {
   const portfolio = await Portfolio.find({ isFeatured: true, isActive: true })
     .sort({ date: -1 })

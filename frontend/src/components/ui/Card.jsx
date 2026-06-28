@@ -1,4 +1,3 @@
-// src/components/ui/Card.jsx
 import { cn } from '../../lib/utils';
 
 function Card({ children, className, hover = false, glass = true, ...props }) {

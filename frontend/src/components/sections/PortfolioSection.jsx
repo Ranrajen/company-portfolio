@@ -1,4 +1,3 @@
-// src/components/sections/PortfolioSection.jsx
 import { portfolioData } from '../../data/company';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';

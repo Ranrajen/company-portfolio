@@ -1,4 +1,3 @@
-// src/components/layout/BackgroundLayer.jsx
 
 function BackgroundLayer() {
   return (

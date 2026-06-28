@@ -1,4 +1,3 @@
-// src/components/layout/Footer.jsx
 import { Link } from 'react-router-dom';
 import { companyInfo, footerLinks, navLinks } from '../../data/company';
 

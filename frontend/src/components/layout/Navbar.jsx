@@ -1,4 +1,4 @@
-// src/components/layout/Navbar.jsx
+
 import { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { navLinks, companyInfo } from '../../data/company';

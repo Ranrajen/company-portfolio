@@ -7,8 +7,9 @@ function CtaSection() {
     <section className="section-padding ">
       <div className="container-custom  ">
         {/* <div className="max-w-7xl mx-auto px-8 border-4 "> */}
-        <div className="glass-card text-center max-w-3xl mx-auto translate-x-50">
-          {/* <div className="max-w-3xl mx-auto bg-red-500 p-10"> */}
+        {/* <div className="glass-card text-center max-w-3xl mx-auto translate-x-50"> */}
+        {/* <div className="max-w-3xl mx-auto bg-red-500 p-10"> */}
+        <div className="glass-card text-center max-w-3xl mx-auto translate-x-0lg:translate-x-50">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Create Your{' '}
             <span className="gradient-text">Next Event</span>?

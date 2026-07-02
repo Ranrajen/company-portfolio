@@ -53,7 +53,7 @@ export default function ServiceDetailPage() {
           <div className="text-6xl mb-6 animate-fade-in">{service.icon}</div>
           <h1 className="animate-slide-up">{service.title}</h1>
           <p
-            className="max-w-3xl mx-auto animate-fade-in translate-x-45"
+            className="max-w-3xl mx-auto animate-fade-in translate-x-0 lg:translate-x-45"
             style={{ marginTop: '24px' }}
           >
             {service.detailedDescription}
